@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-10">
+        <h1 class="text-3xl font-bold">Product Details</h1>
+        <div id="product-details" class="mt-6 bg-white p-6 rounded shadow-md">
+            <!-- Product details will be dynamically inserted here -->
+        </div>
+        <a href="index.html" class="mt-4 inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Back to Home</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        const products = [
+            { id: 1, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 2, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 3, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 4, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 5, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 6, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 7, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 8, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 9, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 10, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 11, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 12, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 13, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 14, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 15, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 16, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 17, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 18, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 19, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 20, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 21, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 22, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 23, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 24, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 25, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 26, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" },
+            { id: 27, name: "Headphones", price: 1500, rating: 4.3, image: "/images/p3.png", totalPurchases: 2000, modeOfOrder: "Online" },
+            { id: 28, name: "Smartwatch", price: 3500, rating: 4.2, image: "/images/p4.png", totalPurchases: 800, modeOfOrder: "Online" },
+            { id: 29, name: "Smartphone", price: 12000, rating: 4.5, image: "/images/p1.png", totalPurchases: 1000, modeOfOrder: "Online" },
+            { id: 30, name: "Laptop", price: 45000, rating: 4.7, image: "/images/p2.png", totalPurchases: 500, modeOfOrder: "Online" }
+        ];
+
+        const product = products.find(p => p.id === parseInt(productId));
+
+        if (product) {
+            document.getElementById("product-details").innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover mb-4">
+                <h2 class="text-2xl font-bold">${product.name}</h2>
+                <p class="text-gray-600">Price: ₹${product.price}</p>
+                <p class="text-yellow-500">Rating: ${product.rating} ⭐</p>
+                <p class="text-gray-600">Total Purchases: ${product.totalPurchases}</p>
+                <p class="text-gray-600">Mode of Order: ${product.modeOfOrder}</p>
+            `;
+        } else {
+            document.getElementById("product-details").innerHTML = `<p class="text-red-500">Product not found!</p>`;
+        }
+    </script>
+</body>
+</html>
